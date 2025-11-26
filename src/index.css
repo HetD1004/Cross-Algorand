@@ -1,0 +1,276 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  /* Animated gradient buttons */
+  .btn-gradient {
+    @apply relative overflow-hidden;
+  }
+  
+  .btn-gradient::before {
+    content: '';
+    @apply absolute inset-0 bg-gradient-to-r from-primary-500 via-primary-600 to-primary-700 opacity-0 transition-opacity duration-300;
+  }
+  
+  .btn-gradient:hover::before {
+    @apply opacity-100;
+  }
+  
+  .btn-gradient > span {
+    @apply relative z-10;
+  }
+
+  /* Custom card hover effects */
+  .card-hover-effect {
+    @apply transition-all duration-300 ease-in-out transform hover:-translate-y-1 hover:shadow-xl;
+  }
+  
+  /* Animated progress bar */
+  .progress-animated .progress-indicator {
+    @apply relative overflow-hidden;
+  }
+  
+  .progress-animated .progress-indicator::after {
+    content: '';
+    @apply absolute inset-0 bg-gradient-to-r from-transparent via-white to-transparent opacity-30;
+    animation: shimmer 2s infinite;
+    transform: translateX(-100%);
+  }
+  
+  @keyframes shimmer {
+    100% {
+      transform: translateX(100%);
+    }
+  }
+  
+  /* Binance-style hero section */
+  .hero-bg {
+    background: linear-gradient(135deg, #1E2329 0%, #2B3139 50%, #1E2329 100%);
+    color: #EAECEF;
+    position: relative;
+    overflow: hidden;
+    border-bottom: 2px solid #F0B90B;
+  }
+  
+  .hero-bg::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23F0B90B' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  }
+  
+  /* Custom nav hover effect */
+  .nav-link-hover {
+    position: relative;
+  }
+  
+  .nav-link-hover::after {
+    content: '';
+    @apply absolute bottom-0 left-0 h-0.5 bg-primary-500;
+    width: 0;
+    transition: width 0.3s ease;
+  }
+  
+  .nav-link-hover:hover::after {
+    width: 100%;
+  }
+  
+  /* Glass morphism effect */
+  .glass-effect {
+    @apply backdrop-blur-md bg-white/70 border border-white/20;
+  }
+  
+  /* Status badges */
+  .status-badge {
+    @apply inline-flex items-center px-2 py-1 rounded-full text-xs font-medium;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .status-badge::before {
+    content: '';
+    @apply absolute inset-0 opacity-15;
+  }
+  
+  .status-badge.active {
+    background-color: rgba(14, 203, 129, 0.2);
+    color: #0ECB81;
+  }
+  
+  .status-badge.active::before {
+    background-color: #0ECB81;
+  }
+  
+  .status-badge.upcoming {
+    background-color: rgba(240, 185, 11, 0.2);
+    color: #F0B90B;
+  }
+  
+  .status-badge.upcoming::before {
+    background-color: #F0B90B;
+  }
+  
+  .status-badge.completed {
+    background-color: rgba(132, 142, 156, 0.2);
+    color: #848E9C;
+  }
+  
+  .status-badge.completed::before {
+    background-color: #848E9C;
+  }
+}
+
+/* Custom scrollbar - OLD (keeping for backup) */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: #1E2329;
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #F0B90B;
+  border-radius: 9999px;
+  transition: background-color 0.3s;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #fcd34d;
+}
+
+/* Binance Dark Theme - Body styling */
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #0B0E11 !important;
+  color: #EAECEF;
+  min-height: 100vh;
+}
+
+/* Main app background */
+.bg-background {
+  background-color: #0B0E11 !important;
+}
+
+/* Page backgrounds */
+main {
+  background-color: #0B0E11 !important;
+}
+
+/* Force dark backgrounds for all cards and surfaces */
+.bg-surface {
+  background-color: #1E2329 !important;
+}
+
+.bg-surface-hover {
+  background-color: #2B3139 !important;
+}
+
+.bg-dark {
+  background-color: #0B0E11 !important;
+}
+
+/* Border colors */
+.border-surface {
+  border-color: #1E2329 !important;
+}
+
+.border-surface-hover {
+  border-color: #2B3139 !important;
+}
+
+/* Text colors */
+.text-text-primary {
+  color: #EAECEF !important;
+}
+
+.text-text-secondary {
+  color: #B7BDC6 !important;
+}
+
+.text-text-muted {
+  color: #848E9C !important;
+}
+
+/* Primary colors */
+.text-primary-400 {
+  color: #F0B90B !important;
+}
+
+.text-primary-300 {
+  color: #fcd34d !important;
+}
+
+.bg-primary-500 {
+  background-color: #F0B90B !important;
+}
+
+.bg-primary-400 {
+  background-color: #F0B90B !important;
+}
+
+.border-primary-400 {
+  border-color: #F0B90B !important;
+}
+
+/* Trading colors */
+.bg-success {
+  background-color: #0ECB81 !important;
+}
+
+.text-success {
+  color: #0ECB81 !important;
+}
+
+.bg-error {
+  background-color: #F6465D !important;
+}
+
+.text-error {
+  color: #F6465D !important;
+}
+
+/* Binance-style scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: #1E2329;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #F0B90B;
+  border-radius: 9999px;
+  transition: background-color 0.3s;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #d39e09;
+}
+
+/* Hide scrollbar utility */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* Enhanced focus outlines for accessibility */
+:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px #0B0E11, 0 0 0 4px #F0B90B;
+}
